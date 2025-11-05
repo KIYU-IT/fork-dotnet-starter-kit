@@ -1,6 +1,22 @@
 version: "4" #on wsl linux replace 3.8
 name: fullstackhero #on wsl linux replace with export COMPOSE_PROJECT_NAME=fullstackhero before docker-compose up command
 
+# Full Stack Deployment (Production Testing / Complete Monitoring)
+#
+# This file runs the entire application stack in containers:
+# - Web API (Backend)
+# - Blazor (Frontend)
+# - PostgreSQL (Database)
+# - Monitoring Stack (Prometheus, Grafana, Jaeger, Loki, OpenTelemetry)
+#
+# 💡 For local development, use docker-compose.db.yml instead
+#    (runs PostgreSQL only, API & Blazor run in Visual Studio)
+#
+# Usage:
+#   docker-compose up -d              # Start all services
+#   docker-compose down               # Stop all services
+#   docker-compose -f docker-compose.db.yml up -d  # Database only (recommended for dev)
+
 services:
   webapi:
     image: ${FSH_DOTNETSTARTERKIT_WEBAPI_IMAGE}

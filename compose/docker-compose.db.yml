@@ -1,0 +1,36 @@
+version: "4"
+name: fsh-database
+
+# PostgreSQL only for local development
+# Use this file when developing with Visual Studio 2022
+# The API and Blazor will run directly from VS, not in containers
+
+services:
+  postgres:
+    container_name: fsh-postgres
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: fullstackhero
+      PGPORT: 5434
+    ports:
+      - 5434:5434
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -p 5434"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - fsh-network
+
+volumes:
+  postgres-data:
+    driver: local
+
+networks:
+  fsh-network:
+    driver: bridge
