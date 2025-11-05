@@ -45,7 +45,7 @@ dotnet run
 {
   "DatabaseOptions": {
     "Provider": "postgresql",
-    "ConnectionString": "Server=localhost;Port=5432;Database=fullstackhero;User Id=postgres;Password=yourpassword"
+    "ConnectionString": "Server=localhost;Port=5434;Database=fullstackhero;User Id=postgres;Password=yourpassword"
   }
 }
 ```
